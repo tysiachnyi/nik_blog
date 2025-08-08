@@ -20,7 +20,7 @@ export default function Home() {
         </p>
 
         <p className="text-muted-foreground max-w-prose leading-relaxed">
-          Interests: AI/ML, web development, and API design. I work mainly with
+          Interests: AI/ML, Web development, and API design. I work mainly with
           TypeScript/Node.js and Python, and I like React, Next.js, Tailwind
           CSS, AWS, PostgreSQL, and MongoDB.
         </p>
