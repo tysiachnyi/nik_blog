@@ -42,7 +42,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Set theme ASAP to avoid flash */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
