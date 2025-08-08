@@ -9,10 +9,10 @@ export default function Home() {
           I&apos;m a software engineer  with a passion for building products that help people live better lives.
         </p>
         <p className="text-muted-foreground max-w-prose">
-          I&apos;m currently living in Düsseldorf, Germany 🇩🇪
+          I&apos;m currently living in Düsseldorf, Germany 
         </p>
         <p className="text-muted-foreground max-w-prose">
-          My Tech Stack 🛠️: TypeScript, Python, React, Next.js, Tailwind CSS, Node.js, AWS, MongoDB, PostgreSQL
+          My Tech Stack: TypeScript, Python, React, Next.js, Tailwind CSS, Node.js, AWS, MongoDB, PostgreSQL
         </p>
           
         
