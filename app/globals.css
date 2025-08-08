@@ -34,15 +34,15 @@ body {
 
 /* Minimal prose styles */
 .prose {
-  @apply leading-relaxed text-base;
+  @apply text-base leading-relaxed;
 }
 
 .prose h1 {
-  @apply text-3xl font-semibold tracking-tight mb-6;
+  @apply mb-6 text-3xl font-semibold tracking-tight;
 }
 
 .prose h2 {
-  @apply text-2xl font-semibold tracking-tight mt-10 mb-4;
+  @apply mt-10 mb-4 text-2xl font-semibold tracking-tight;
 }
 
 .prose p {
@@ -54,11 +54,11 @@ body {
 }
 
 .prose ul {
-  @apply list-disc pl-6 my-4;
+  @apply my-4 list-disc pl-6;
 }
 
 .prose ol {
-  @apply list-decimal pl-6 my-4;
+  @apply my-4 list-decimal pl-6;
 }
 
 .prose pre,
