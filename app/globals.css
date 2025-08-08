@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted: #f4f4f5;
+  --muted-foreground: #6b7280;
+  --border: #e5e7eb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Class-based dark mode so a toggle can control it */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --muted: #111214;
+  --muted-foreground: #9ca3af;
+  --border: #1f2937;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Minimal prose styles */
+.prose {
+  @apply leading-relaxed text-base;
+}
+
+.prose h1 {
+  @apply text-3xl font-semibold tracking-tight mb-6;
+}
+
+.prose h2 {
+  @apply text-2xl font-semibold tracking-tight mt-10 mb-4;
+}
+
+.prose p {
+  @apply my-4;
+}
+
+.prose a {
+  @apply underline underline-offset-4 hover:opacity-80;
+}
+
+.prose ul {
+  @apply list-disc pl-6 my-4;
+}
+
+.prose ol {
+  @apply list-decimal pl-6 my-4;
+}
+
+.prose pre,
+.prose code {
+  @apply bg-muted text-foreground/90 rounded px-1 py-0.5;
+}
