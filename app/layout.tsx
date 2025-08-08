@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -81,6 +82,7 @@ export default function RootLayout({
           <footer className="text-muted-foreground pb-10 text-xs">
             © {new Date().getFullYear()} Nik. All rights reserved.
           </footer>
+          <Analytics />
         </div>
       </body>
     </html>
