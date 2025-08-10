@@ -2,9 +2,9 @@
 
 This is my personal blog built with Next.js 15. It has a minimal UI and supports dark/light mode. I write posts as Markdown files in the `posts/` folder.
 
-### What I included
+### Features
 
-- Pages: Home, Blog, Contact
+- Pages: Home, Blog, Projects, Contact
 - Markdown posts: `.md` files in `posts/` are auto-listed on `/blog` and rendered at `/blog/[slug]`
 - Dark/Light mode: toggle in the header (saved in `localStorage`)
 - Static generation for fast, SEO-friendly pages
@@ -31,36 +31,23 @@ npm run build
 npm start
 ```
 
-### Adding a post (note to self)
-
-Create a Markdown file in `posts/`. The filename becomes the slug.
-
-Example: `posts/my-new-post.md`
-
-```md
----
-title: My New Post
-date: 2025-03-01
-excerpt: Optional short description
-tags: [notes]
----
-
-Content in Markdown goes here.
-```
-
-### Structure I care about
+### Structure
 
 ```
 app/
-  layout.tsx          # Layout, header, footer, theme
-  page.tsx            # Home
-  blog/page.tsx       # Blog list
-  blog/[slug]/page.tsx# Blog post
-  contact/page.tsx    # Contact
-  ThemeToggle.tsx     # Theme switcher (client)
+  layout.tsx                  # Layout, header, footer, theme
+  page.tsx                    # Home
+  projects/page.tsx           # Projects list
+  projects/[slug/]/page.tsx   # Project page
+  blog/page.tsx               # Blog list
+  blog/[slug]/page.tsx        # Blog post
+  contact/page.tsx            # Contact
+  ThemeToggle.tsx             # Theme switcher (client)
 lib/
-  md.ts               # Markdown parsing + helpers
-posts/                # My posts
+  md.ts                       # Markdown parsing + helpers
+  github.ts                   # Fetches data from GitHub API
+  utils.ts                    # Reusable utility functions
+posts/                        # My posts
 ```
 
 ### Theming notes
@@ -69,7 +56,7 @@ posts/                # My posts
 - Theme tokens in `app/globals.css` (`--background`, `--foreground`, etc.)
 - Toggle component lives in the header (`ThemeToggle`)
 
-### Optional next steps (for me)
+### Optional next steps
 
 - Set `metadataBase` (site URL) in `app/layout.tsx`
 - Add `sitemap` and `robots` if needed
