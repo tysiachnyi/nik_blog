@@ -86,9 +86,9 @@ export default function RootLayout({
           <footer className="text-muted-foreground pb-10 text-xs">
             © {new Date().getFullYear()} Nik. All rights reserved.
           </footer>
-          <SpeedInsights />
           <Analytics />
         </div>
+        <SpeedInsights />
       </body>
     </html>
   );
