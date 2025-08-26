@@ -27,12 +27,24 @@ export const metadata: Metadata = {
     robots: "noai, noimageai",
   },
   metadataBase: new URL("https://www.nikitatysiachnyi.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     title: "Nik Blog",
     description: "Personal blog and notes",
     url: "https://www.nikitatysiachnyi.com",
     siteName: "Nik Blog",
     images: [{ url: "https://www.nikitatysiachnyi.com/og-image.png" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nik Blog",
+    description: "Personal blog and notes",
+    site: "@nikitatysiachnyi",
+    creator: "@nikitatysiachnyi",
+    images: ["https://www.nikitatysiachnyi.com/og-image.png"],
   },
 };
 
@@ -44,6 +56,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <meta httpEquiv="Content-Language" content="en" />
+        <meta name="locale" content="en_US" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -82,7 +96,9 @@ export default function RootLayout({
               </div>
             </nav>
           </header>
-          <main className="flex-1 py-10">{children}</main>
+          <main className="flex-1 py-10" role="main">
+            {children}
+          </main>
           <footer className="text-muted-foreground pb-10 text-xs">
             © {new Date().getFullYear()} Nik. All rights reserved.
           </footer>

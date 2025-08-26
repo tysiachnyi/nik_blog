@@ -3,6 +3,9 @@ import { getAllPosts } from "@/lib/md";
 
 export const metadata = {
   title: "Blog",
+  alternates: {
+    canonical: "/blog",
+  },
 };
 
 export default async function BlogPage() {

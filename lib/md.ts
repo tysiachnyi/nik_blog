@@ -9,6 +9,7 @@ export type PostFrontmatter = {
   date: string; // ISO string
   excerpt?: string;
   tags?: string[];
+  ogImage?: string;
 };
 
 export type Post = {
