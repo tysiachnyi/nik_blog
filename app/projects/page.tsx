@@ -20,7 +20,7 @@ export default async function ProjectsPage() {
               className="group border-border hover:bg-muted rounded-lg border p-5 transition-colors"
             >
               <h2 className="text-lg font-semibold">{project.name}</h2>
-              <p className="text-muted-foreground mt-1 text-sm">
+              <p className="text-muted-foreground my-1 text-sm">
                 {project.language}
               </p>
               {project.description && (

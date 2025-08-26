@@ -16,9 +16,29 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return {};
+  const ogImage =
+    post.frontmatter.ogImage || "https://www.nikitatysiachnyi.com/og-image.png";
   return {
     title: post.frontmatter.title,
     description: post.frontmatter.excerpt,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: post.frontmatter.title,
+      description: post.frontmatter.excerpt,
+      type: "article",
+      url: `https://www.nikitatysiachnyi.com/blog/${slug}`,
+      images: [{ url: ogImage }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.frontmatter.title,
+      description: post.frontmatter.excerpt,
+      site: "@nikitatysiachnyi",
+      creator: "@nikitatysiachnyi",
+      images: [ogImage],
+    },
   };
 }
 
@@ -30,13 +50,37 @@ export default async function PostPage({
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return notFound();
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.frontmatter.title,
+    description: post.frontmatter.excerpt || "",
+    datePublished: post.frontmatter.date,
+    author: {
+      "@type": "Person",
+      name: "Nikita Tysiachnyi",
+    },
+    image:
+      post.frontmatter.ogImage ||
+      "https://www.nikitatysiachnyi.com/og-image.png",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.nikitatysiachnyi.com/blog/${slug}`,
+    },
+  };
   return (
-    <article className="prose">
-      <h1>{post.frontmatter.title}</h1>
-      <div className="text-muted-foreground -mt-4 mb-6 text-sm">
-        <time>{new Date(post.frontmatter.date).toLocaleDateString()}</time>
-      </div>
-      <div dangerouslySetInnerHTML={{ __html: post.content }} />
-    </article>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <article className="prose">
+        <h1>{post.frontmatter.title}</h1>
+        <div className="text-muted-foreground -mt-4 mb-6 text-sm">
+          <time>{new Date(post.frontmatter.date).toLocaleDateString()}</time>
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+      </article>
+    </>
   );
 }
