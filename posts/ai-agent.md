@@ -9,9 +9,50 @@ Building AI agents that can intelligently decide when to use tools like web sear
 
 ## Step-by-Step Code Walkthrough
 
-### 1. Import the Tools
+### 1. Initialize the Project
 
-```js
+initialize a new npm project if you haven't already:
+
+```bash
+touch package.json
+```
+
+Add this to your package.json
+
+```json
+{
+  "name": "ai-agent",
+  "version": "1.0.0",
+  "description": "",
+  "license": "MIT",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@langchain/community": "^0.3.49",
+    "@langchain/core": "^0.3.65",
+    "@langchain/langgraph": "^0.3.10",
+    "@langchain/ollama": "^0.2.3",
+    "@langchain/openai": "^0.6.2",
+    "dotenv": "^17.2.0"
+  }
+}
+```
+
+
+create a .mts file
+```bash
+touch index.mts
+```
+
+### 2. Import the Tools
+
+We will use the following imports:
+
+```ts
 import { TavilySearchResults } from "@langchain/community/tools/tavily_search";
 import { RunnableSequence } from "@langchain/core/runnables";
 import { Ollama } from "@langchain/ollama";
@@ -19,9 +60,24 @@ import readline from "readline";
 import "dotenv/config";
 ```
 
-### 2. Set Up the Search and Model
+### 3. Set Up the Search and Model
 
-```js
+we will use Tavily for web search and Ollama for local LLM.
+Model configuration can be adjusted as needed.
+
+Download ollama from [ollama.com](https://ollama.com/download) and install it.
+the same for the llama3.1 model. [model link](https://ollama.com/library/llama3.1)
+
+for tavily, sign up at [tavily.com](https://tavily.com) and get your API key.
+
+save it to the .env file in the root of your project:
+
+```
+TAVILY_API_KEY=your_api_key_here
+```
+
+
+```ts
 const tavily = new TavilySearchResults({
   maxResults: 3,
   apiKey: process.env.TAVILY_API_KEY,
@@ -29,11 +85,12 @@ const tavily = new TavilySearchResults({
 const ollama = new Ollama({ model: "llama3.1", temperature: 0.8 });
 ```
 
-### 3. The Decision Layer: Answer or Search?
+
+### 4. The Decision Layer: Answer or Search?
 
 This function decides if the model can answer directly, or if it should search the web first.
 
-```js
+```ts
 const answerOrSearch = async (userInput) => {
   const directAnswer = await ollama.invoke(
     `You are an expert assistant. If you know the answer to the user's question,
@@ -53,11 +110,11 @@ const answerOrSearch = async (userInput) => {
 };
 ```
 
-### 4. The Search-and-Answer Chain
+### 5. The Search-and-Answer Chain
 
 This sequence rewrites the query, searches, and answers using the results.
 
-```js
+```ts
 const chain = RunnableSequence.from([
   // Step 1: Prepare search request
   async (query) => {
@@ -89,7 +146,7 @@ const chain = RunnableSequence.from([
 ]);
 ```
 
-### 5. Run the Agent
+### 6. Run the Agent
 
 ```js
 const rl = readline.createInterface({
@@ -101,6 +158,24 @@ rl.question("Ask me anything: ", async (userInput) => {
 	await answerOrSearch(userInput);
 	rl.close();
 ```
+
+Run the script with:
+
+```bash
+npx tsx agent.mts
+```
+Type your question when prompted.
+
+### Example 
+
+```bash
+Ask me anything: Who is the president of France?
+Updated search request: "president France"
+Searching for: "president France"
+... (search results and answer)
+```
+
+
 
 ## Conclusion & Next Steps
 
