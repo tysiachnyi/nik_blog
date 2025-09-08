@@ -8,3 +8,6 @@ coverage
 # generated assets
 public/*.svg
 
+#posts 
+posts/**
+
