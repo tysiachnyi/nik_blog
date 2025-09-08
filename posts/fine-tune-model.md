@@ -322,4 +322,4 @@ By following these steps, you can fine-tune an open source model to better suit 
 
 In next posts I will show you how to deploy this model to a local server and create a simple web interface to interact with it.
 
-Working example code can be found in my [GitHub repository](https://github.com/tysiachnyi/fine_tune_mlx/tree/main)
+Working example code can be found in my [GitHub repository](https://github.com/tysiachnyi/fine_tune_mlx)
