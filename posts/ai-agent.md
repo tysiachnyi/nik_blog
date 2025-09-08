@@ -2,7 +2,7 @@
 title: Creating AI Agents with Open Source Models
 date: 2025-08-26
 excerpt: Build a retrieval-capable AI agent using LangChain, a local Ollama model (llama3.1), and the Tavily search API with a decision layer that skips unnecessary tool calls.
-tags: - AI - machine-learning - langchain - javascript - typescript - nodejs - ollama - agents - search - tavily
+tags: AI, machine learning, langchain, javascript, typescript, nodejs, ollama, agents, search, tavily
 ---
 
 Building AI agents that can intelligently decide when to use tools like web search can greatly enhance their capabilities. In this guide, we'll create a simple AI agent using LangChain, a local Ollama model (llama3.1), and the Tavily search API. The agent will include a decision layer that determines whether to answer directly or perform a web search based on the user's query.
