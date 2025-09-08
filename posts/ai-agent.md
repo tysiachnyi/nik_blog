@@ -1,6 +1,6 @@
 ---
 title: Creating AI Agents with Open Source Models
-date: 2025-08-26
+date: 2025-09-08
 excerpt: Build a retrieval-capable AI agent using LangChain, a local Ollama model (llama3.1), and the Tavily search API with a decision layer that skips unnecessary tool calls.
 tags: AI, machine learning, langchain, javascript, typescript, nodejs, ollama, agents, search, tavily
 ---
@@ -36,8 +36,10 @@ This function decides if the model can answer directly, or if it should search t
 ```js
 const answerOrSearch = async (userInput) => {
   const directAnswer = await ollama.invoke(
-    `You are an expert assistant. If you know the answer to the user's question, provide a direct and complete answer. 
-		If you do not know the answer or cannot answer confidently, reply with only the word SEARCH.\n\nUser question: ${userInput}`,
+    `You are an expert assistant. If you know the answer to the user's question,
+     provide a direct and complete answer. 
+		If you do not know the answer or cannot answer confidently, 
+    reply with only the word SEARCH.\n\nUser question: ${userInput}`,
   );
   if (directAnswer && !/SEARCH/i.test(directAnswer)) {
     console.log("Direct answer from model:");
@@ -60,7 +62,13 @@ const chain = RunnableSequence.from([
   // Step 1: Prepare search request
   async (query) => {
     const searchRequest = await ollama.invoke(
-      `Rewrite the following user query to create a concise, highly relevant search request for a web search.\n- Make the search request as short and specific as possible.\n- Focus only on the key information needed to get the best search results.\n- Do not include the original query, explanations, or any extra context.\n- Return only the improved search request, nothing else.\n\nExample:\nUser query: \"What is the weather in San Francisco?\"\nSearch request: \"weather San Francisco\"\n\nUser query: \"${query}\"`,
+      `Rewrite the following user query to create a concise, highly relevant search request for a web search.
+      \n- Make the search request as short and specific as possible.
+      \n- Focus only on the key information needed to get the best search results.
+      \n- Do not include the original query, explanations, or any extra context.
+      \n- Return only the improved search request, nothing else.
+      \n\nExample:\nUser query: \"What is the weather in San Francisco?\"\nSearch request: 
+      \"weather San Francisco\"\n\nUser query: \"${query}\"`,
     );
     console.log(`Updated search request: ${searchRequest}`);
     return searchRequest;
@@ -73,7 +81,8 @@ const chain = RunnableSequence.from([
   },
   // Step 3: Format prompt
   ({ query, searchResults }) => {
-    return `Search results for \"${query}\":\n${JSON.stringify(searchResults, null, 2)}\n\nAnswer the user's question using the search results above.`;
+    return `Search results for \"${query}\":\n${JSON.stringify(searchResults, null, 2)}
+    \n\nAnswer the user's question using the search results above.`;
   },
   // Step 4: Call Ollama
   async (prompt) => await ollama.invoke(prompt),
@@ -95,7 +104,8 @@ rl.question("Ask me anything: ", async (userInput) => {
 
 ## Conclusion & Next Steps
 
-You’ve just built a smart, efficient AI agent that combines local AI with real-time web search. This pattern is powerful for building assistants, chatbots, or research tools.
+You’ve just built a smart, efficient AI agent that combines local AI with real-time web search.
+This pattern is powerful for building assistants, chatbots, or research tools.
 
 **Want to go further?**
 
