@@ -11,3 +11,4 @@ public/*.svg
 #posts 
 posts/**
 
+*.css
