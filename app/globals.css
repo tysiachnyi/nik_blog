@@ -18,7 +18,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-/* Class-based dark mode so a toggle can control it */
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
@@ -32,7 +31,6 @@ body {
   color: var(--foreground);
 }
 
-/* Minimal prose styles */
 .prose {
   @apply text-base leading-relaxed;
 }
@@ -66,16 +64,13 @@ body {
   @apply bg-muted text-foreground/90 rounded px-1 py-0.5;
 }
 
-/* Enhanced code block styles for mobile responsiveness */
 .prose pre {
   @apply px-4 py-3 overflow-x-auto;
   font-size: 0.875rem;
   line-height: 1.5;
   white-space: pre;
   word-wrap: normal;
-  /* Ensure horizontal scrolling instead of breaking layout */
   max-width: 100%;
-  /* Better scrollbar on mobile */
   -webkit-overflow-scrolling: touch;
 }
 
@@ -86,14 +81,12 @@ body {
   word-wrap: normal;
 }
 
-/* Inline code should wrap */
 .prose :not(pre) > code {
   @apply bg-muted text-foreground/90 rounded px-1 py-0.5;
   white-space: pre-wrap;
   word-break: break-word;
 }
 
-/* Mobile-specific improvements */
 @media (max-width: 640px) {
   .prose pre {
     font-size: 0.8125rem;
@@ -109,7 +102,6 @@ body {
   }
 }
 
-/* Tablet improvements */
 @media (max-width: 768px) {
   .prose pre {
     font-size: 0.8125rem;
@@ -117,7 +109,6 @@ body {
   }
 }
 
-/* Ensure the article container doesn't overflow */
 .prose {
   @apply text-base leading-relaxed;
   max-width: 100%;

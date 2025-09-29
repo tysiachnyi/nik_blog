@@ -127,12 +127,10 @@ const chain = RunnableSequence.from([
       \n\nExample:\nUser query: \"What is the weather in San Francisco?\"\nSearch request: 
       \"weather San Francisco\"\n\nUser query: \"${query}\"`,
     );
-    console.log(`Updated search request: ${searchRequest}`);
     return searchRequest;
   },
   // Step 2: Get search results
   async (query) => {
-    console.log(`Searching for: ${query}`);
     const searchResults = await tavily.call(query);
     return { query, searchResults };
   },
