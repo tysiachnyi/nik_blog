@@ -3,7 +3,6 @@ import { Header1, ProjectCard } from "../components";
 
 export default async function ProjectsPage() {
   const projects = await listProjects();
-  console.log("projects", projects);
   return (
     <section className="space-y-6">
       <Header1>Projects</Header1>

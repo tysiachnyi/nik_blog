@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getAllPosts } from "@/lib/md";
+import { Header1 } from "../components";
 
 export const metadata = {
   title: "Blog",
@@ -12,7 +13,7 @@ export default async function BlogPage() {
   const posts = await getAllPosts();
   return (
     <section className="space-y-6">
-      <h1 className="text-3xl font-semibold tracking-tight">Blog</h1>
+      <Header1>Blog</Header1>
       {posts.length === 0 ? (
         <p className="text-muted-foreground">No posts yet.</p>
       ) : (
