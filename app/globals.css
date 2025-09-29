@@ -65,3 +65,61 @@ body {
 .prose code {
   @apply bg-muted text-foreground/90 rounded px-1 py-0.5;
 }
+
+/* Enhanced code block styles for mobile responsiveness */
+.prose pre {
+  @apply px-4 py-3 overflow-x-auto;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  white-space: pre;
+  word-wrap: normal;
+  /* Ensure horizontal scrolling instead of breaking layout */
+  max-width: 100%;
+  /* Better scrollbar on mobile */
+  -webkit-overflow-scrolling: touch;
+}
+
+.prose pre code {
+  @apply bg-transparent px-0 py-0;
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;
+}
+
+/* Inline code should wrap */
+.prose :not(pre) > code {
+  @apply bg-muted text-foreground/90 rounded px-1 py-0.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  .prose pre {
+    font-size: 0.8125rem;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    border-radius: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .prose :not(pre) > code {
+    font-size: 0.8125rem;
+  }
+}
+
+/* Tablet improvements */
+@media (max-width: 768px) {
+  .prose pre {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+  }
+}
+
+/* Ensure the article container doesn't overflow */
+.prose {
+  @apply text-base leading-relaxed;
+  max-width: 100%;
+  overflow-x: hidden;
+}
