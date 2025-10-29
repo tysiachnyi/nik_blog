@@ -9,6 +9,10 @@ export const metadata = {
 
 const cardsData = [
   {
+    title: "X",
+    href: "https://x.com/niktysiachnyi",
+  },
+  {
     title: "Email",
     href: "mailto:nikita.tysiachnyi@gmail.com",
   },
